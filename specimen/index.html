@@ -1,0 +1,1111 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Data Mining">
+      
+      
+        <link rel="canonical" href="https://awlya12.github.io/DataMining_AulyaFridayanti_170441100017/specimen/">
+      
+      
+        <meta name="author" content="Aulya Fridayanti">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>K-Nearest Neighbor - Aulya's Project</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#knn-k-nearest-neighbor" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://awlya12.github.io/DataMining_AulyaFridayanti_170441100017/" title="Aulya's Project" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Aulya's Project
+            </span>
+            <span class="md-header-nav__topic">
+              K-Nearest Neighbor
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/Awlya12/DataMining_AulyaFridayanti_170441100017" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    My Project
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Home" class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://awlya12.github.io/DataMining_AulyaFridayanti_170441100017/" title="Aulya's Project" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Aulya's Project
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/Awlya12/DataMining_AulyaFridayanti_170441100017" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    My Project
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="K-Means Clustering" class="md-nav__link">
+      K-Means Clustering
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        K-Nearest Neighbor
+      </label>
+    
+    <a href="./" title="K-Nearest Neighbor" class="md-nav__link md-nav__link--active">
+      K-Nearest Neighbor
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tentang-apakah-knn-k-nearest-neighbor-ini" title="Tentang apakah KNN (K-Nearest Neighbor) ini ?" class="md-nav__link">
+    Tentang apakah KNN (K-Nearest Neighbor) ini ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kelebihan-dan-kekurangan-knn" title="Kelebihan dan Kekurangan KNN" class="md-nav__link">
+    Kelebihan dan Kekurangan KNN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apa-sajakah-yang-menggunakan-case" title="Apa sajakah yang menggunakan Case?" class="md-nav__link">
+    Apa sajakah yang menggunakan Case?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topik" title="Topik" class="md-nav__link">
+    Topik
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../customization/" title="Decision Tree" class="md-nav__link">
+      Decision Tree
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tentang-apakah-knn-k-nearest-neighbor-ini" title="Tentang apakah KNN (K-Nearest Neighbor) ini ?" class="md-nav__link">
+    Tentang apakah KNN (K-Nearest Neighbor) ini ?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kelebihan-dan-kekurangan-knn" title="Kelebihan dan Kekurangan KNN" class="md-nav__link">
+    Kelebihan dan Kekurangan KNN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apa-sajakah-yang-menggunakan-case" title="Apa sajakah yang menggunakan Case?" class="md-nav__link">
+    Apa sajakah yang menggunakan Case?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topik" title="Topik" class="md-nav__link">
+    Topik
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="knn-k-nearest-neighbor">KNN (K-Nearest Neighbor)<a class="headerlink" href="#knn-k-nearest-neighbor" title="Permanent link">&para;</a></h1>
+<div class="toc">
+<ul>
+<li><a href="#knn-k-nearest-neighbor">KNN (K-Nearest Neighbor)</a><ul>
+<li><a href="#tentang-apakah-knn-k-nearest-neighbor-ini">Tentang apakah KNN (K-Nearest Neighbor) ini ?</a></li>
+<li><a href="#kelebihan-dan-kekurangan-knn">Kelebihan dan Kekurangan KNN</a></li>
+<li><a href="#apa-sajakah-yang-menggunakan-case">Apa sajakah yang menggunakan Case?</a></li>
+<li><a href="#topik">Topik</a></li>
+</ul>
+</li>
+<li><a href="#perhitungan-knn-sederhana">Perhitungan KNN Sederhana</a><ul>
+<li><a href="#contoh-kasus">Contoh Kasus :</a><ul>
+<li><a href="#contoh-permasalahan-1">Contoh permasalahan 1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#implementasi">Implementasi</a><ul>
+<li><a href="#pengaturan">Pengaturan</a><ul>
+<li><a href="#library-yang-diperlukan">Library yang diperlukan</a></li>
+<li><a href="#langkah-langkah">Langkah - langkah</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#referensi">Referensi</a></li>
+</ul>
+</div>
+<p><img alt="" src="../assets/images/Knn-.jpg" /></p>
+<h2 id="tentang-apakah-knn-k-nearest-neighbor-ini"><strong>Tentang apakah KNN (K-Nearest Neighbor) ini ?</strong><a class="headerlink" href="#tentang-apakah-knn-k-nearest-neighbor-ini" title="Permanent link">&para;</a></h2>
+<p>Siapakah KNN? Algoritme <em>k-nearest neighbor</em> (k-NN atau KNN) adalah sebuah metode untuk melakukan klasifikasi terhadap objek berdasarkan data pembelajaran yang jaraknya paling dekat dengan objek tersebut. Tujuan dari algoritma ini adalah mengklasifikasi objek baru berdasakan atribut dan sampel latih. pengklasifikasian tidak menggunakan model apapun untuk dicocokkan dan hanya berdasarkan pada memori. Diberikan titik uji, akan ditemukan sejumlah K objek (titik training) yang paling dekat dengan titik uji. Klasifikasi menggunakan voting terbanyak di antara klasifikasi dari K objek. Algoritma K-NN menggunakan klasifikasi ketetanggaan sebagai nilai prediksi dari sample uji yang baru. Dekat atau jauhnya tetangga biasanya dihitung berdasarkan jarak Eucledian.</p>
+<h2 id="kelebihan-dan-kekurangan-knn"><strong>Kelebihan dan Kekurangan KNN</strong><a class="headerlink" href="#kelebihan-dan-kekurangan-knn" title="Permanent link">&para;</a></h2>
+<p>KNN ini memiliki kelebihan dan kekurangan, diantaranya ada: </p>
+<p><strong>Kelebihan</strong> dari Algoritma KNN ini adalah:</p>
+<ul>
+<li>Sederhana untuk diterapkan, </li>
+<li>Pelatihan lebih mudah dan memiliki beberapa parameter. </li>
+<li>dia tangguh terhadap training data yang noisy dan efektif apabila data latih nya besar.</li>
+</ul>
+<p><strong>Kekurangan :</strong></p>
+<ul>
+<li>KNN perlu menentukan nilai dari parameter K (jumlah dari tetangga terdekat)</li>
+<li>Pembelajaran berdasarkan jarak tidak jelas mengenai jenis jarak apa yang harus digunakan dan atribut mana yang harus digunakan untuk mendapatkan hasil yang terbaik</li>
+<li>Biaya komputasi cukup tinggi karena diperlukan perhitungan jarak dari tiap sample uji pada keseluruhan sample latih</li>
+</ul>
+<p><img alt="" src="../assets/images/1_DiDliGvrwvoheDCvgzX7vw.png" /></p>
+<h2 id="apa-sajakah-yang-menggunakan-case"><strong>Apa sajakah yang menggunakan Case?</strong><a class="headerlink" href="#apa-sajakah-yang-menggunakan-case" title="Permanent link">&para;</a></h2>
+<p>Ada saat-saat di mana data dapat diberikan yang dianonimkan dan tujuannya adalah untuk mencoba mengklasifikasikannya, tanpa benar-benar mengetahui konteks data tersebut. Pikirkan kepribadian pelanggan kelompok untuk merekomendasikan produk tertentu. Beberapa 'kasus penggunaan' ini adalah sebagai berikut:</p>
+<ul>
+<li>Sistem Rekomendasi</li>
+<li>Pencegahan pencurian di bisnis ritel modern</li>
+<li>Mendeteksi pola dalam penggunaan kartu kredit dan banyak lagi</li>
+</ul>
+<h2 id="topik"><strong>Topik</strong><a class="headerlink" href="#topik" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>Apa itu KNN?* </p>
+</li>
+<li>
+<p>Bagaimana cara kita menggunakannya</p>
+</li>
+</ul>
+<p><em>1) Impor Library</em> </p>
+<p><em>2) Baca dalam Dataset</em> </p>
+<p>3) Menstandarisasi skala untuk persiapan Algoritma KNN* </p>
+<p><em>4) Membagi data menjadi pelatihan dan set tes</em> </p>
+<p><em>5) Buat dan Latih Model</em> </p>
+<p><em>6) Buat prediksi dengan Model</em> </p>
+<p>7) Mengevaluasi prediksi* </p>
+<p><em>8) Mengevaluasi nilai-K alternatif untuk prediksi yang lebih baik</em></p>
+<p><em>9) Tingkat Kesalahan Plot</em> </p>
+<p><em>10) Sesuaikan nilai K per evaluasi tingkat kesalahan</em></p>
+<h1 id="perhitungan-knn-sederhana">Perhitungan KNN Sederhana<a class="headerlink" href="#perhitungan-knn-sederhana" title="Permanent link">&para;</a></h1>
+<p>Algoritma KNN sangat sederhana.  Algoritma ini bekerja berdasarkan jarak minimum dari data baru terhadap K tetangga terdekat yang telah ditetapkan.  Setelah diperoleh K tetangga terdekat, prediksi kelas dari data baru akan ditentukan berdasarkan mayoritas K tetangga terdekat. </p>
+<p>KNN dapat dibagi menjadi  2 jenis bersadarkan tetangga yang digunakan sebagai acuan perhitungan yaitu  :</p>
+<p>–  1-NN  yaitu pengklasifikasikan dilakukan terhadap 1 data  tetangga yang memiliki label  terdekat </p>
+<p>–  k-NN  yaitu pengklasifikasikan dilakukan terhadap k  data  tetangga yang memiliki label  terdekat dengan K harus lebih besar 1 dan ganjil</p>
+<p>Algoritma KNN: </p>
+<ol>
+<li>Tentukan parameter K = jumlah tetangga terdekat </li>
+<li>hitung jarak antara data baru dengan semua data training </li>
+<li>urutkan jarak tersebut dan tetapkan tetangga terdekat berdasarkan jarak minimum ke-K </li>
+<li>periksa kelas  dari tetangga terdekat </li>
+<li>gunakan mayoritas sederhana dari kelas tetangga terdekat sebagai nilai prediksi data baru </li>
+</ol>
+<h2 id="contoh-kasus"><strong>Contoh Kasus :</strong><a class="headerlink" href="#contoh-kasus" title="Permanent link">&para;</a></h2>
+<p>Pengenalan untuk menentukan seseorang itu mempunyai hipertensi atau tidak</p>
+<p><strong>Tabel Tabel data hipertensi</strong></p>
+<table>
+<thead>
+<tr>
+<th>Umur</th>
+<th>Kegemukan</th>
+<th>Hipertensi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>muda</td>
+<td>gemuk</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td>muda</td>
+<td>sangat gemuk</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td>paruh baya</td>
+<td>gemuk</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td>paruh baya</td>
+<td>terlalu gemuk</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>tua</td>
+<td>terlalu gemuk</td>
+<td>Ya</td>
+</tr>
+</tbody>
+</table>
+<p>Jika data uji sebagai berikut maka termasuk hipertensi atau tidak?</p>
+<p><strong>Tabel uji data  hipertensi</strong></p>
+<table>
+<thead>
+<tr>
+<th>Umur</th>
+<th>Kegemukan</th>
+<th>Hipertensi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tua</td>
+<td>sangat gemuk</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p>Penyelesaian dengan 1-NN</p>
+<ol>
+<li>Gambarkan dalam bentuk grafik sebagai berikut</li>
+</ol>
+<p><img alt="" src="../assets/images/clip_image002.jpg" /></p>
+<p>​                       **Gambar Hasil grafik dari tabel data hipertensi **</p>
+<ol>
+<li>Hitunglah jarak titik yang diujikan dengan menggunakan Euclidean Distance, dengan asumsi nilai  sebagai berikut:</li>
+</ol>
+<p><strong>Tabel tabel konversi katagorikal ke interger</strong></p>
+<table>
+<thead>
+<tr>
+<th>muda</th>
+<th>1</th>
+<th></th>
+<th>gemuk</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>paruh baya</td>
+<td>2</td>
+<td></td>
+<td>sangat gemuk</td>
+<td>2</td>
+</tr>
+<tr>
+<td>tua</td>
+<td>3</td>
+<td></td>
+<td>terlalu gemuk</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Cari data terdekat </li>
+</ol>
+<p><img alt="" src="../assets/images/clip_image004.jpg" /></p>
+<p>​                       <strong>Gambar Data baru masuk didalam kelas hipertensi</strong></p>
+<ol>
+<li>Berilah label data uji sesui dengan label data terdekat</li>
+</ol>
+<p>Algoritma k-NN</p>
+<ol>
+<li>
+<p>Tentukan  <strong>k</strong> misalkan 3</p>
+</li>
+<li>
+<p>Hitung  jarak antara data baru ke setiap data </p>
+</li>
+<li>
+<p>Tentukan <strong>k</strong> atau 3 data yang memilki  label  dan  mempunyai jarak yang paling  dekat</p>
+</li>
+</ol>
+<p><img alt="" src="../assets/images/clip_image006.jpg" /></p>
+<p>​        **Gambar Data baru dibandingkan dengan 3 data terdekat **</p>
+<ol>
+<li>Klasifikasikan data baru ke dalam data yang memilili label mayoritas </li>
+</ol>
+<p><img alt="" src="../assets/images/clip_image008.jpg" /></p>
+<p>​        <strong>Gambar Data baru termasuk kedalam kelas hipertensi</strong></p>
+<h3 id="contoh-permasalahan-1"><strong>Contoh permasalahan 1</strong><a class="headerlink" href="#contoh-permasalahan-1" title="Permanent link">&para;</a></h3>
+<p>Diberikan data training berikut dibawah ini, terdiri dari 2 atribut dengan skala kuantitatif yaitu X1 dan X2 serta 2 kelas yaitu baik dan buruk. Jika terdapat data baru dengan nilai X1=3 dan X2=7, tentukan kelasnya</p>
+<p>data training: data latih K-NN</p>
+<table>
+<thead>
+<tr>
+<th>X1</th>
+<th>X2</th>
+<th>Y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>Buruk</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>Buruk</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>Baik</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>Baik</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Tentukan parameter K = jumlah tetangga terdekat </li>
+</ol>
+<p>Misalkan ditetapkan K = 3 </p>
+<ol>
+<li>Hitung jarak antara data baru dengan semua data training </li>
+</ol>
+<p><strong>Tabel Jarak data latih dengan data uji</strong></p>
+<table>
+<thead>
+<tr>
+<th>X1</th>
+<th>X2</th>
+<th>Kuadrar jarak dengan data baru(3,7)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>(7-3)2+(7-7)2=16</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>(7-3)2+(4-7)2=25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>(3-3)2+(4-7)2=9</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>(1-3)2+(4-7)2=13</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Urutkan jarak tersebut dan tetapkan tetangga terdekat berdasarkan jarak minimum ke-K </li>
+</ol>
+<p><strong>Tabel Mencari 3 data terdekat</strong></p>
+<table>
+<thead>
+<tr>
+<th>X1</th>
+<th>X2</th>
+<th>Kuadrar jarak dengan data baru(3,7)</th>
+<th>Peringkat Jarak minimum</th>
+<th>Termasuk 3 tetangga terdekat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>(7-3)2+(7-7)2=16</td>
+<td>3</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>(7-3)2+(4-7)2=25</td>
+<td>4</td>
+<td>Tidak</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>(3-3)2+(4-7)2=9</td>
+<td>1</td>
+<td>Ya</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>(1-3)2+(4-7)2=13</td>
+<td>2</td>
+<td>Ya</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Periksa kelas  dari tetangga terdekat </li>
+</ol>
+<p><strong>Tabel Memberi label berdasarkan label terbanyak dari 3 data terdekat</strong></p>
+<table>
+<thead>
+<tr>
+<th>X1</th>
+<th>X2</th>
+<th>Kuadrar jarak dengan data baru(3,7)</th>
+<th>Peringkat Jarak minimum</th>
+<th>Termasuk 3 tetangga terdekat</th>
+<th>Y= kelas tetangga terdekat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>7</td>
+<td>(7-3)2+(7-7)2=16</td>
+<td>3</td>
+<td>Ya</td>
+<td>Buruk</td>
+</tr>
+<tr>
+<td>7</td>
+<td>4</td>
+<td>(7-3)2+(4-7)2=25</td>
+<td>4</td>
+<td>Tidak</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>(3-3)2+(4-7)2=9</td>
+<td>1</td>
+<td>Ya</td>
+<td>Baik</td>
+</tr>
+<tr>
+<td>1</td>
+<td>4</td>
+<td>(1-3)2+(4-7)2=13</td>
+<td>2</td>
+<td>Ya</td>
+<td>Baik</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>gunakan mayoritas sederhana dari kelas tetangga terdekat sebagai nilai prediksi data baru </li>
+</ol>
+<p>​      Hasil pada no 4 menunjukkan bahwa dari 3 tetangga terdekat, terdapat 2 kelas Baik dan 1 kelas Buruk, maka disimpulkan bahwa  data baru termasuk ke dalam <strong>kelas Baik.</strong> </p>
+<h1 id="implementasi">Implementasi<a class="headerlink" href="#implementasi" title="Permanent link">&para;</a></h1>
+<h2 id="pengaturan"><strong>Pengaturan</strong><a class="headerlink" href="#pengaturan" title="Permanent link">&para;</a></h2>
+<h3 id="library-yang-diperlukan"><strong>Library yang diperlukan</strong><a class="headerlink" href="#library-yang-diperlukan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Program saya ini menggunakan <strong>Python 3.6</strong> dalam <strong>notebook Jupyter</strong> dengan dependensi di bawah ini </li>
+<li>Matplotlib 2.1.2</li>
+<li>Numpy 1.14.1</li>
+<li>Panda 0.20.3</li>
+<li>Seaborn 0.7.1</li>
+<li>Scikit Belajar 0.19.1</li>
+</ul>
+<h3 id="langkah-langkah"><strong>Langkah - langkah</strong><a class="headerlink" href="#langkah-langkah" title="Permanent link">&para;</a></h3>
+<p><strong>Langkah 1: Impor Library yang diperlukan</strong> 
+Mirip dengan diskusi sebelumnya, kita perlu mengimpor pustaka yang memungkinkan untuk analisis data dan visualisasi data agar dapat digunakan untuk dataset. Kami akan menggunakan panda, numpy, matplotlib dan seaborn untuk melakukan ini.</p>
+<p>Pustaka Eksplorasi Data</p>
+<div class="codehilite"><pre><span></span>  <span class="kn">import</span> <span class="nn">pandas</span> <span class="nn">sebagai</span> <span class="nn">pd</span> 
+  <span class="kn">import</span> <span class="nn">numpy</span> <span class="nn">sebagai</span> <span class="nn">np</span> 
+</pre></div>
+
+<p>Pustaka Visualisasi Data</p>
+<div class="codehilite"><pre><span></span>  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="nn">sebagai</span> <span class="nn">plt</span> 
+  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="nn">sebagai</span> <span class="nn">sns</span> 
+  <span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span> 
+</pre></div>
+
+<div class="codehilite"><pre><span></span>  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="nn">sebagai</span> <span class="nn">plt</span> 
+  <span class="kn">import</span> <span class="nn">seaborn</span> <span class="nn">sebagai</span> <span class="nn">sns</span> 
+  <span class="o">%</span> <span class="n">matplotlib</span> <span class="n">inline</span> 
+</pre></div>
+
+<p><strong>Langkah 2: Baca dalam dataset</strong> 
+Kami akan menggunakan metode panda .read_csv () untuk membaca dalam <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=id&amp;prev=search&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;u=https://raw.githubusercontent.com/kbrook10/bootcamp_python_for_data_science_and_machine_learning/master/support_files/Machine%20Learning%20Sections/K-Nearest-Neighbors/Classified%20Data&amp;xid=17259,15700023,15700186,15700191,15700253,15700256,15700259&amp;usg=ALkJrhjl8e_ymWgMctv6hc7Py3TmLQB7gA">dataset</a> . Kemudian kita akan menggunakan metode .head () untuk mengamati beberapa baris pertama data, untuk memahami informasi dengan lebih baik. Dalam kasus kami, tajuk fitur (kolom) memberi tahu kami cukup sedikit. Ini bagus karena kami hanya berusaha mendapatkan wawasan melalui pengelompokan poin data baru dengan mereferensikan elemen tetangga.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Gunakan metode panda .read_csv () untuk membaca dalam dataset rahasia </span>
+  <span class="c1"># index_col -&gt; argumen memberikan indeks ke kolom tertentu </span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span> <span class="p">(</span><span class="s1">&#39;Data Rahasia&#39;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> 
+  <span class="c1"># Gunakan metode .head () untuk menampilkan beberapa baris pertama </span>
+  <span class="n">df</span><span class="o">.</span><span class="n">head</span> <span class="p">()</span> 
+</pre></div>
+
+<p><img alt="" src="../assets/images/K1.png" /></p>
+<p><strong>Langkah 3: Membakukan (menormalkan) skala data untuk mempersiapkan algoritma KNN</strong> 
+Karena jarak antara pasangan titik memainkan bagian penting dalam klasifikasi, perlu untuk menormalkan data untuk meminimalkan hal ini ( <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=id&amp;prev=search&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;u=https://stats.stackexchange.com/questions/287425/why-do-you-need-to-scale-data-in-knn&amp;xid=17259,15700023,15700186,15700191,15700253,15700256,15700259&amp;usg=ALkJrhjCCC4PJ-yhP8_kproUYcPPeqPqAA">tautan bermanfaat</a> ). Ini akan menghasilkan array nilai. Sekali lagi, KNN tergantung pada jarak antara setiap fitur.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Impor modul untuk menstandarisasi skala </span>
+  <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span> 
+  <span class="c1"># Buat instance (yaitu objek) dari scaler standar </span>
+  <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span> 
+  <span class="c1"># Paskan objek dengan semua data kecuali Kelas Target </span>
+  <span class="c1"># gunakan metode .drop () untuk mengumpulkan semua fitur kecuali Kelas Target </span>
+  <span class="c1"># axis -&gt; argumen mengacu pada kolom;  a 0 akan mewakili baris </span>
+  <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;TARGET CLASS&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span> <span class="mi">1</span><span class="p">))</span> 
+</pre></div>
+
+<p>Kami harus mendapatkan konfirmasi berikut di bawah ini:</p>
+<div class="codehilite"><pre><span></span>  # Gunakan objek scaler untuk melakukan transformasi 
+  scaled_features = scaler.transform(df.drop(&#39;TARGET CLASS&#39;,axis=-1)) 
+  # Tinjau array nilai yang dihasilkan dari proses fitur skala 
+  scaled_features
+</pre></div>
+
+<p><img alt="" src="../assets/images/k2.png" /></p>
+<p>Di sini kita memiliki dataset dinormalisasi, minus kolom target</p>
+<p><img alt="" src="../assets/images/K3.png" /></p>
+<p><strong>Langkah 4: Pisahkan data yang dinormalisasi menjadi pelatihan dan set tes</strong> 
+Langkah ini diperlukan untuk mempersiapkan kita untuk pemasangan (yaitu pelatihan) model nanti. Variabel "X" adalah kumpulan semua fitur. Variabel "y" adalah label target yang menentukan klasifikasi berdasarkan 1 atau 0.Tujuan kami adalah untuk mengidentifikasi kategori mana yang harus dimasukkan ke dalam titik data baru.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Impor modul untuk membagi data </span>
+  <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+  <span class="c1"># Atur X dan ys </span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">df_feat</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TARGET CLASS&#39;</span><span class="p">]</span>
+  <span class="c1"># Gunakan metode train_test_split () untuk membagi data menjadi set masing-masing </span>
+  <span class="c1"># test_size -&gt; argumen mengacu pada ukuran subset pengujian </span>
+  <span class="c1"># random_state -&gt; argumen memastikan jaminan bahwa output dari Run </span>
+  <span class="c1"># 1 akan sama dengan output dari Run 2, yaitu pemisahan Anda akan selalu sama </span>
+  <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">101</span><span class="p">)</span> 
+</pre></div>
+
+<p>Ini memungkinkan digunakan untuk melatih model kami pada set pelatihan dan mengevaluasi model yang dibangun terhadap set tes untuk mengidentifikasi kesalahan.</p>
+<p><strong>Langkah 5: Buat dan Latih Model</strong> 
+Di sini kita membuat Obyek KNN dan menggunakan metode .fit () untuk melatih model. Setelah menyelesaikan model, kami harus menerima konfirmasi bahwa pelatihan telah selesai.</p>
+<p><img alt="" src="../assets/images/k4.png" /></p>
+<p><strong>Langkah 6: Buat Prediksi</strong> 
+Di sini kami meninjau di mana model kami akurat dan di mana elemennya salah diklasifikasi.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Gunakan metode .predict () untuk membuat prediksi dari subset X_test </span>
+  <span class="n">pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span> <span class="p">(</span><span class="n">X_test</span><span class="p">)</span> 
+  <span class="c1"># Tinjau prediksi </span>
+  <span class="n">pred</span> 
+</pre></div>
+
+<p><img alt="" src="../assets/images/k5.png" /></p>
+<p><strong>Langkah 6: Buat Prediksi</strong> 
+Di sini kami meninjau di mana model kami akurat dan di mana elemennya salah diklasifikasi.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Gunakan metode .predict () untuk membuat prediksi dari subset X_test </span>
+  <span class="n">pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span> <span class="p">(</span><span class="n">X_test</span><span class="p">)</span> 
+  <span class="c1"># Tinjau prediksi </span>
+  <span class="n">pred</span> 
+</pre></div>
+
+<p><img alt="" src="../assets/images/k6.png" /></p>
+<p><em>Confusion Matrix</em></p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Cetak matriks kebingungan </span>
+  <span class="n">cmat</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> 
+  <span class="c1">#print (cmat) </span>
+  <span class="k">print</span> <span class="p">(</span><span class="s1">&#39;TP - True Negative {}&#39;</span><span class="o">..</span> <span class="n">format</span> <span class="p">(</span><span class="n">cmat</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span> 
+  <span class="k">print</span> <span class="p">(</span><span class="s1">&#39;FP - False Positive {}&#39;</span><span class="o">..</span> <span class="n">format</span> <span class="p">(</span><span class="n">cmat</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> 
+  <span class="k">print</span> <span class="p">(</span><span class="s1">&#39;FN - Format Negatif {}&#39;</span><span class="o">.</span> <span class="p">(</span><span class="n">cmat</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span> 
+  <span class="k">print</span> <span class="p">(</span><span class="s1">&#39;TP - True Positive {}&#39;</span><span class="o">.</span> <span class="n">format</span> <span class="p">(</span><span class="n">cmat</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span> 
+<span class="n">cetak</span> <span class="p">(</span><span class="s1">&#39;Tingkat Akurasi: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cmat</span><span class="p">))))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Misclassification Rate: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cmat</span><span class="p">))))</span>
+</pre></div>
+
+<p><img alt="" src="../assets/images/k7.png" /></p>
+<p><strong>Langkah 8: Evaluasi nilai-K alternatif untuk prediksi yang lebih baik</strong> 
+Untuk menyederhanakan proses mengevaluasi beberapa kasus nilai-k, kami membuat fungsi untuk menurunkan kesalahan menggunakan rata-rata di mana prediksi kami tidak sama dengan nilai tes.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Hasilkan fungsi untuk menambahkan tingkat kesalahan KNN dengan berbagai nilai-k </span>
+  <span class="c1"># error_rate -&gt; daftar kosong untuk mengumpulkan tingkat kesalahan pada berbagai nilai-k </span>
+  <span class="c1"># for loop -&gt; loop melalui nilai k 1 hingga 39 </span>
+  <span class="c1"># knn -&gt; membuat instance KNeighborsClassifier dengan berbagai k </span>
+  <span class="c1"># knn.fit -&gt; melatih model </span>
+  <span class="c1"># pred_i -&gt; melakukan prediksi dari model pada bagian pengujian </span>
+  <span class="c1"># error_rate.append -&gt; menambahkan tingkat kesalahan model dengan berbagai nilai-k, menggunakan rata-rata di mana prediksi tidak </span>
+  <span class="c1"># sama dengan nilai tes </span>
+<span class="n">error_rate</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">):</span>
+
+    <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">pred_i</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">error_rate</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">pred_i</span> <span class="o">!=</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+
+<p><strong>Langkah 9: Tingkat Kesalahan Plot</strong></p>
+<div class="codehilite"><pre><span></span><span class="err">!</span><span class="p">[</span><span class="n">k8</span><span class="p">](</span><span class="n">D</span><span class="p">:</span>\<span class="n">Kuliah</span>\<span class="n">Datmin</span>\<span class="n">Github</span>\<span class="n">mkdocs</span><span class="o">-</span><span class="n">material</span><span class="o">-</span><span class="n">master</span>\<span class="n">docs</span>\<span class="n">assets</span>\<span class="n">images</span>\<span class="n">k8</span><span class="o">.</span><span class="n">png</span><span class="p">)</span>  <span class="c1"># Konfigurasikan dan plot tingkat kesalahan di atas nilai k </span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">40</span><span class="p">),</span> <span class="n">error_rate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Error Rate vs. K-Values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;K-Values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error Rate&#39;</span><span class="p">)</span>
+</pre></div>
+
+<p>Di sini kita melihat bahwa tingkat kesalahan terus menurun ketika kita meningkatkan nilai-k. Sebuah gambar menceritakan seribu kata. Atau setidaknya di sini, kita dapat memahami apa nilai k mengarah ke model yang optimal. Nilai-k dari 17 tampaknya memberikan tingkat kesalahan yang layak tanpa terlalu banyak suara, seperti yang kita lihat dengan nilai-k dari 28 dan lebih besar.</p>
+<p><img alt="" src="../assets/images/k8.png" /></p>
+<p><strong>10) Sesuaikan nilai K per evaluasi tingkat kesalahan</strong> 
+Ini hanya fine tuning model kami untuk meningkatkan akurasi. Kita perlu melatih model kita dengan nilai-k yang baru.</p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Latih kembali model menggunakan nilai-k optimal </span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+
+<p><em>Laporan Klasifikasi -&gt; Ini memberitahu kita model kami adalah 95% akurat ...</em></p>
+<div class="codehilite"><pre><span></span>  <span class="c1"># Cetak laporan klasifikasi dan matriks kebingungan </span>
+<span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">))</span> 
+</pre></div>
+
+<p><img alt="" src="../assets/images/k9.png" /></p>
+<p><em>Confusion Matrix</em></p>
+<div class="codehilite"><pre><span></span><span class="err">!</span><span class="p">[</span><span class="n">k10</span><span class="p">](</span><span class="n">D</span><span class="p">:</span>\<span class="n">Kuliah</span>\<span class="n">Datmin</span>\<span class="n">Github</span>\<span class="n">mkdocs</span><span class="o">-</span><span class="n">material</span><span class="o">-</span><span class="n">master</span>\<span class="n">docs</span>\<span class="n">assets</span>\<span class="n">images</span>\<span class="n">k10</span><span class="o">.</span><span class="n">png</span><span class="p">)</span>  <span class="c1"># Cetak matriks kebingungan </span>
+  <span class="n">cmat</span> <span class="o">=</span> <span class="n">confusion_matrix</span> <span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> 
+  <span class="c1">#print (cmat) </span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;TP - True Negative {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;FP - False Positive {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;FN - False Negative {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;TP - True Positive {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Accuracy Rate: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cmat</span><span class="p">))))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Misclassification Rate: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">cmat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">cmat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cmat</span><span class="p">))))</span>
+</pre></div>
+
+<p><img alt="" src="../assets/images/k10.png" /></p>
+<p>Tips:</p>
+<p>~ Saat ini membaca <a href="https://translate.googleusercontent.com/translate_c?depth=1&amp;hl=id&amp;prev=search&amp;rurl=translate.google.com&amp;sl=en&amp;sp=nmt4&amp;u=https://www.amazon.com/Naked-Statistics-Stripping-Dread-Data/dp/1480590185&amp;xid=17259,15700023,15700186,15700191,15700253,15700256,15700259&amp;usg=ALkJrhgxLbwg4Sibweif7xu6OFlT0rhIKA"><em>Naked Statistics</em></a> oleh Charles Wheelan. Perspektif yang bagus tentang statistik dan bagaimana itu digunakan dalam kehidupan sehari-hari. Jika kamu membenci program sarjanamu karena kamu tahu tujuan, ini buku untuk kamu.</p>
+<blockquote>
+<p><em>Quote</em>
+<em>Mudah berbohong dengan statistik, tetapi sulit mengatakan yang sebenarnya tanpa itu. ~ Andrejs Dunkels</em></p>
+</blockquote>
+<h1 id="referensi">Referensi<a class="headerlink" href="#referensi" title="Permanent link">&para;</a></h1>
+<ol>
+<li><a href="https://informatikalogi.com">https://informatikalogi.com</a> Algorithm</li>
+<li><a href="https://rosyid.lecturer.pens.ac.id/">https://rosyid.lecturer.pens.ac.id/</a> KonsepLearning-naivebayes-knn</li>
+<li><a href="https://www.ketutrare.com/2018/11/algoritma-k-nearest-neighbor-dan-contoh-soal.html">https://www.ketutrare.com/2018/11/algoritma-k-nearest-neighbor-dan-contoh-soal.html</a> </li>
+</ol>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../getting-started/" title="K-Means Clustering" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                K-Means Clustering
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../customization/" title="Decision Tree" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Decision Tree
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Aulya Fridayanti
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/Awlya12" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/AULYAFRDY" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/in/Aulyafrd01" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
